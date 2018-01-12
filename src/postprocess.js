@@ -135,5 +135,7 @@ export class Postprocess {
 	resize(width, height) {
 		this._width = width;
 		this._height = height;
+
+		this._framebuffer.updateSize(this._width, this._height);
 	}
 }

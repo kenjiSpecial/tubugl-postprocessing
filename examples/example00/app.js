@@ -29,7 +29,7 @@ export default class App {
 		this._makeCamera();
 		this._makeCameraController();
 		this._makePostprocessing();
-		this.isPost = false;
+		this.isPost = true;
 
 		this.resize(this._width, this._height);
 
@@ -37,6 +37,9 @@ export default class App {
 			this.stats = new Stats();
 			document.body.appendChild(this.stats.dom);
 			this._addGui();
+		} else {
+			let desc = document.getElementById('tubugl-desc');
+			desc.style.display = 'none';
 		}
 	}
 
@@ -105,6 +108,7 @@ export default class App {
 			sphere.resize(this._width, this._height);
 		});
 		this._camera.updateSize(this._width, this._height);
+		this._postProcess.resize(this._width, this._height);
 	}
 
 	destroy() {}
@@ -155,9 +159,5 @@ export default class App {
 		this.gui = new dat.GUI();
 		this.playAndStopGui = this.gui.add(this, '_playAndStop').name('pause');
 		this.gui.add(this, 'isPost');
-
-		// this._sphereGUIFolder = this.gui.addFolder('rounding  cube');
-		// this._sphere.addGui(this._sphereGUIFolder);
-		// this._sphereGUIFolder.open();
 	}
 }
