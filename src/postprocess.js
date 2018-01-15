@@ -6,7 +6,8 @@ import {
 	TRIANGLES,
 	UNSIGNED_SHORT,
 	BLEND,
-	CULL_FACE
+	CULL_FACE,
+	BACK
 } from 'tubugl-constants';
 
 export class Postprocess {
@@ -120,7 +121,8 @@ export class Postprocess {
 		return this;
 	}
 	draw() {
-		this._gl.disable(CULL_FACE);
+		this._gl.enable(CULL_FACE);
+		this._gl.cullFace(BACK);
 
 		this._gl.viewport(0, 0, this._width, this._height);
 		this._gl.clear(0, 0, 0, 1);
