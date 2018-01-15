@@ -2,7 +2,7 @@
 
 [![NPM version][npm-image]][npm-url] 
 
-prototype kit with parcel
+postprocessing kit for tubugl
 
 ## install
 
@@ -17,7 +17,7 @@ yarn add ###-###
 
 ## examples
 
-https://kenjispecial.github.io/tubugl-helper/
+https://kenjispecial.github.io/tubugl-postprocessing/
 
 ## Running the examples locally
 
