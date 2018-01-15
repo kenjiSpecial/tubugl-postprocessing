@@ -1,4 +1,4 @@
-# parcel-prototype-kit
+# tubugl-postprocessing
 
 [![NPM version][npm-image]][npm-url] 
 
@@ -25,7 +25,8 @@ you need to install [parcel](https://github.com/parcel-bundler/parcel) to run ex
 
 ```sh
 yarn
-yarn run ###-###
+# example00
+yarn run example00
 ```
 
 [npm-image]: https://img.shields.io/npm/v/###-###.svg?style=flat-square

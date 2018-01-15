@@ -21,6 +21,7 @@
     "tubugl-utils": "^1.0.5"
   },
   "devDependencies": {
+    "babel-preset-env": "^1.6.1",
     "minimist": "^1.2.0",
     "parcel-plugin-glsl": "kenjiSpecial/parcel-plugin-glsl",
     "puppeteer": "^0.13.0"
