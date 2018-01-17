@@ -4,6 +4,7 @@ import { COLOR_BUFFER_BIT, DEPTH_BUFFER_BIT, BLEND } from 'tubugl-constants';
 
 const vertexShader = require('./shaders/blur.vert');
 const fragmentShader = require('./shaders/blur.frag');
+console.log(vertexShader);
 
 export class Blur {
 	constructor(gl, width, height) {
