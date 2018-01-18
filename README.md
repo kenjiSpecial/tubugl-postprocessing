@@ -29,6 +29,10 @@ yarn
 yarn run example00
 ```
 
+referrence:
+
+- [http://devmaster.net/p/3100/shader-effects-glow-and-bloom](http://devmaster.net/p/3100/shader-effects-glow-and-bloom)
+
 [npm-image]: https://img.shields.io/npm/v/###-###.svg?style=flat-square
 [npm-url]: https://www.npmjs.com/package/###-###
  

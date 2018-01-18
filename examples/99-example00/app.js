@@ -12,7 +12,7 @@ import { Sphere } from './sphere';
 import { PerspectiveCamera, CameraController } from 'tubugl-camera';
 import { mathUtils } from 'tubugl-utils';
 import { randomFloat } from 'tubugl-utils/src/mathUtils';
-import { Bloom } from '../../src/bloom';
+import { Bloom } from '../../src/bloom2';
 
 export default class App {
     constructor(params = {}) {
@@ -29,7 +29,6 @@ export default class App {
         this._makeCamera();
         this._makeCameraController();
         this._makeBloom();
-        this.isPost = true;
 
         this.resize(this._width, this._height);
 
@@ -51,43 +50,21 @@ export default class App {
     loop() {
         if (this.stats) this.stats.update();
         this._camera.update();
-        for (var ii = 0; ii < 2; ii++) {
-            if (ii == 1) {
-                this._bloom.bind();
-                // this._bloom.bloomProgram.bind();
-            } else {
-                this._bloom.bindMainTarget();
-            }
-            let scale;
-            if (ii == 1) scale = this._bloom.scale;
-            else scale = 1;
+        for (var ii = 0; ii < this._bloom.framebufferArray.length; ii++) {
+            this._bloom.bind(ii);
+
+            let scale = ii + 1;
             this.gl.viewport(0, 0, this._width / scale, this._height / scale);
             this.gl.clearColor(0, 0, 0, 1);
             this.gl.enable(DEPTH_TEST);
             this.gl.clear(COLOR_BUFFER_BIT | DEPTH_BUFFER_BIT);
-
-
 
             this._spheres.forEach(sphere => {
                 sphere.render(this._camera);
             });
         }
 
-        if (this.isPost) this._bloom.draw();
-
-        // this._bloom.unbind();
-
-        // this.gl.viewport(0, 0, this._width, this._height);
-        // this.gl.clearColor(0, 0, 0, 1);
-        // this.gl.enable(DEPTH_TEST);
-        // this.gl.clear(COLOR_BUFFER_BIT | DEPTH_BUFFER_BIT);
-
-        // this._camera.update();
-
-        // this._spheres.forEach(sphere => {
-        //     sphere.render(this._camera);
-        // });
-
+        this._bloom.draw();
     }
 
     animateOut() {
@@ -175,6 +152,5 @@ export default class App {
     _addGui() {
         this.gui = new dat.GUI();
         this.playAndStopGui = this.gui.add(this, '_playAndStop').name('pause');
-        this.gui.add(this, 'isPost');
     }
 }

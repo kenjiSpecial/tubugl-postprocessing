@@ -83,7 +83,7 @@ export class Bloom {
 
         this._program.bind();
         for (let ii = 0; ii < iterations; ii++) {
-            var radius = iterations / 2 - parseInt(ii / 2);
+            var radius = 1; //iterations / 2 - parseInt(ii / 2);
 
             this._framebuffers.write.bind();
 
@@ -126,8 +126,6 @@ export class Bloom {
             this._finalProgram.getUniforms('uWindowRate').location,
             this._height / this._width
         );
-        let overlayVal = 0.5;
-        this._gl.uniform1f(this._finalProgram.getUniforms('uOverlay').location, overlayVal);
 
         this._finalProgram.setUniformTexture(this.targetFrameBuffer.texture, 'uMainTexture');
         this.targetFrameBuffer.texture.activeTexture().bind();
@@ -152,6 +150,7 @@ export class Bloom {
         this._width = width;
         this._height = height;
         let scale = 2;
+        this.scale = scale;
         this._winWidth = width / scale;
         this._winHeight = height / scale;
         // console.log(this._wid);
